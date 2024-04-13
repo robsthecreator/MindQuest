@@ -3,7 +3,7 @@ import Home from "./components/pages/Home";
 import MindMap from "./components/pages/MindMap";
 import Tasks from "./components/pages/Tasks";
 import User from "./components/pages/User";
-import NavBar from "./components/layout/Navbar";
+import NavBar from "./components/Navbar/Navbar";
 import Container from "./components/layout/Container";
 import usericon from "./img/user_456212.png"
 

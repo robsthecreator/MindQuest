@@ -1,0 +1,45 @@
+.navbar {
+  background-color: #282c34;
+  box-shadow: 0 0 20px 3px;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px 7vh;
+
+  > svg {
+    color: rgb(253, 252, 252);
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-right: 60%;
+  }
+}
+
+.navbar a {
+  font-size: 1rem;
+  color: rgb(253, 252, 252);
+  text-decoration: none;
+}
+.navbar a:hover {
+  color: hsl(0, 20%, 79%);
+}
+
+.navbar li {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+}
+
+
+img.user_icon_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: black 1px solid;
+  margin-left: 1vh;
+}
