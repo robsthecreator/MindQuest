@@ -1,11 +1,12 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./components/pages/Home";
-import MindMap from "./components/pages/MindMap";
-import Tasks from "./components/pages/Tasks";
-import User from "./components/pages/User";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import NavBar from "./components/Navbar/Navbar";
 import Container from "./components/layout/Container";
-import usericon from "./img/user_456212.png"
+import Home from "./components/pages/Home";
+import MindMap from "./components/pages/MindMap";
+import Newtask from "./components/pages/Newtask";
+import Tasks from "./components/pages/Tasks";
+import User from "./components/pages/User";
+import usericon from "./img/user_456212.png";
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route exact path="/tasks">
             <Tasks />
+          </Route>
+          <Route exact path="/newtask">
+            <Newtask />
           </Route>
           <Route exact path="/user">
             <User />

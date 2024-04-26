@@ -1,0 +1,14 @@
+.select_box {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0.2em;
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  background-color: #13242e;
+  color: #fdfcfc;
+  font-size: 1rem;
+  border: none;
+  text-align: center;
+  outline: none;
+}
