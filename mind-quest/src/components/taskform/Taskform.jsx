@@ -6,8 +6,9 @@ import Textarea from "../form/Textarea";
 import Container from "../layout/Container";
 import styles from "./Taskform.module.css";
 
-function Taskform({ btnText }) {
+function Taskform({ handleSubmit, btnText, taskData }) {
   const [categories, setCategories] = useState([]);
+  const [task, setTask] = useState(taskData || {});
 
   useEffect(() => {
     fetch("http://localhost:5000/categories", {
@@ -23,28 +24,60 @@ function Taskform({ btnText }) {
       .catch((err) => console.log(err));
   }, []);
 
+  const submit = (e) => {
+    e.preventDefault();
+    // console.log(task)
+    handleSubmit(task);
+  };
+
+  function handleChange(e) {
+    setTask({
+      ...task,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleCategory(e) {
+    setTask({
+     ...task,
+      category: {
+        id: e.target.value,
+        name: e.target.options[e.target.selectedIndex].text,
+      },
+    });
+  }
+
   return (
     <Container>
-      <div className={styles.create_task_container}>
-        <Input
-          type="text"
-          text="Título da tarefa"
-          name="name"
-          placeholder="Insira o título da tarefa"
-        />
-        <Select
-          name="category_id"
-          text="Selecione a categoria"
-          options={categories}
-        />
-        <Textarea
-          type="text"
-          text="Descrição da tarefa"
-          name="name"
-          placeholder="Insira a descrição da tarefa"
-        />
-        <SubmitButton text={btnText} />
-      </div>
+      <form onSubmit={submit}>
+        <div className={styles.create_task_container}>
+          <Input
+            type="text"
+            text="Título da tarefa"
+            name="name"
+            placeholder="Insira o título da tarefa"
+            handleOnChange={handleChange}
+            value={task.name ? task.name : ''}
+          />
+          <Select
+            name="category_id"
+            text="Selecione a categoria"
+            options={categories}
+            handleOnChange={handleCategory}
+            value={task.category ? task.category.id : ''}
+          />
+          <Textarea
+            type="text"
+            text="Descrição da tarefa"
+            name="description"
+            placeholder="Insira a descrição da tarefa"
+            handleOnChange={handleChange}
+            maxLength={255}
+            value={task.description ? task.description : ''}
+          />
+          <SubmitButton text={btnText} />
+        </div>
+      </form>
     </Container>
   );
 }

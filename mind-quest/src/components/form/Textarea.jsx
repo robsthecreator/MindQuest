@@ -15,9 +15,11 @@ function Textarea({
       <textarea
         className={styles.form_desc}
         type={type}
+        name={name}
         maxLength={maxLength}
+        id={name}
         placeholder={placeholder}
-        handleOnChange={handleOnChange}
+        onChange={handleOnChange}
         value={value}
       />
     </div>

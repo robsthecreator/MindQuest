@@ -1,25 +1,44 @@
 {
-    "tasks": [],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Pessoal"
-        },
-        {
-            "id": 2,
-            "name": "Trabalho"
-        },
-        {
-            "id": 3,
-            "name": "Estudos"
-        },
-        {
-            "id": 4,
-            "name": "Saúde"
-        },
-        {
-            "id": 5,
-            "name": "Lazer"
-        }
-    ]
+  "tasks": [
+    {
+      "id": "3e5c",
+      "name": "Task teste",
+      "category": {
+        "id": "3",
+        "name": "Estudos"
+      },
+      "description": "Adicionando tarefa de teste"
+    },
+    {
+      "id": "da74",
+      "name": "Task teste2",
+      "category": {
+        "id": "3",
+        "name": "Estudos"
+      },
+      "description": "Adicionando tarefa de teste2"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Pessoal"
+    },
+    {
+      "id": "2",
+      "name": "Trabalho"
+    },
+    {
+      "id": "3",
+      "name": "Estudos"
+    },
+    {
+      "id": "4",
+      "name": "Saúde"
+    },
+    {
+      "id": "5",
+      "name": "Lazer"
+    }
+  ]
 }
