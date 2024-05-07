@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import TaskCard from "../layout/TaskCard";
 import Message from "../layout/Message";
 import { useLocation, useHistory } from "react-router-dom";
+import LinkButton from "../layout/LinkButton";
+import styles from "./Tasks.module.css"
 
 function Tasks() {
   const location = useLocation();
@@ -33,7 +35,10 @@ function Tasks() {
 
   return (
     <div>
-      <h1>Tasks</h1>
+      <div className={styles.header_container}>
+        <h1>Suas tarefas</h1>
+        <LinkButton text="Criar nova tarefa" to="/newtask"/>
+      </div>
       {message && <Message msg={message} type="success" />}
       <TaskCard />
     </div>

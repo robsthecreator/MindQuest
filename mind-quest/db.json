@@ -56,6 +56,33 @@
         "id": "4",
         "name": "Saúde"
       }
+    },
+    {
+      "id": "b55a",
+      "name": "tarefa",
+      "category": {
+        "id": "2",
+        "name": "Trabalho"
+      },
+      "description": "tarefa desc"
+    },
+    {
+      "id": "6dfb",
+      "name": "tarefa 1",
+      "category": {
+        "id": "2",
+        "name": "Trabalho"
+      },
+      "description": "tarefa descrição"
+    },
+    {
+      "id": "c727",
+      "name": "tarefa",
+      "description": "teste",
+      "category": {
+        "id": "3",
+        "name": "Estudos"
+      }
     }
   ],
   "categories": [

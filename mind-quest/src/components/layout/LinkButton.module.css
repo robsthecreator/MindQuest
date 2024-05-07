@@ -1,0 +1,17 @@
+.link_button {
+    text-decoration: none;
+    color: #282c34;
+    height: 3rem;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 hsl(198, 1%, 29%);
+    transition: all 0.8s;
+    background-color: hsla(166, 50%, 70%, 0.7);
+}
+
+.link_button:hover {
+    background-color: #22252c;
+    color: #fdfcfc;
+}
