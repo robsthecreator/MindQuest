@@ -5,6 +5,7 @@ function Input({ type, text, name, placeholder, handleOnChange, value }) {
     <div>
       <label htmlFor={name}>{text}:</label>
       <input
+        maxLength={46}
         className={styles.form_input}
         type={type}
         name={name}

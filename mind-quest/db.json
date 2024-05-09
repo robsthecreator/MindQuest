@@ -1,110 +1,40 @@
 {
   "tasks": [
     {
-      "id": "6b52",
-      "name": "tarefa",
+      "id": "117b",
+      "name": "Dar o commit e push",
       "category": {
-        "id": "3",
-        "name": "Estudos"
+        "category_id": "2",
+        "category_name": "Trabalho"
       },
-      "description": "tarefa"
-    },
-    {
-      "id": "fb72",
-      "name": "t",
-      "description": "b",
-      "category": {
-        "id": "3",
-        "name": "Estudos"
-      }
-    },
-    {
-      "id": "6196"
-    },
-    {
-      "id": "4387",
-      "name": "teste",
-      "description": "bbb",
-      "category": {
-        "id": "2",
-        "name": "Trabalho"
-      }
-    },
-    {
-      "id": "d271",
-      "name": "bbbbbb",
-      "description": "bbbb",
-      "category": {
-        "id": "5",
-        "name": "Lazer"
-      }
-    },
-    {
-      "id": "d152",
-      "description": "eee",
-      "name": "eeerr",
-      "category": {
-        "id": "2",
-        "name": "Trabalho"
-      }
-    },
-    {
-      "id": "d5eb",
-      "description": "bbbbbbbbbbb",
-      "name": "assasassa",
-      "category": {
-        "id": "4",
-        "name": "Saúde"
-      }
-    },
-    {
-      "id": "b55a",
-      "name": "tarefa",
-      "category": {
-        "id": "2",
-        "name": "Trabalho"
-      },
-      "description": "tarefa desc"
-    },
-    {
-      "id": "6dfb",
-      "name": "tarefa 1",
-      "category": {
-        "id": "2",
-        "name": "Trabalho"
-      },
-      "description": "tarefa descrição"
-    },
-    {
-      "id": "c727",
-      "name": "tarefa",
-      "description": "teste",
-      "category": {
-        "id": "3",
-        "name": "Estudos"
-      }
+      "description": "Alterações: Estilizações, melhoria na organização, conexão com o banco de dados para adicionar as tarefas vindas do banco de dados."
     }
   ],
   "categories": [
     {
-      "id": "1",
-      "name": "Pessoal"
+      "category_id": "1",
+      "category_name": "Pessoal",
+      "id": "3ba2"
     },
     {
-      "id": "2",
-      "name": "Trabalho"
+      "category_id": "2",
+      "category_name": "Trabalho",
+      "id": "9225"
     },
     {
-      "id": "3",
-      "name": "Estudos"
+      "category_id": "3",
+      "category_name": "Estudos",
+      "id": "1587"
     },
     {
-      "id": "4",
-      "name": "Saúde"
+      "category_id": "4",
+      "category_name": "Saúde",
+      "id": "3da3"
     },
     {
-      "id": "5",
-      "name": "Lazer"
+      "category_id": "5",
+      "category_name": "Lazer",
+      "id": "13f2"
     }
   ]
 }

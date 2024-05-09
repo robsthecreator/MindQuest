@@ -4,3 +4,15 @@
     justify-content: space-around;
     padding: 0;
 }
+
+
+.task_container {
+    padding: 30px;
+    max-width: 170vh;
+    margin: 0 auto;
+    background-color: #282c34;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }

@@ -3,7 +3,7 @@ import TaskCard from "../layout/TaskCard";
 import Message from "../layout/Message";
 import { useLocation, useHistory } from "react-router-dom";
 import LinkButton from "../layout/LinkButton";
-import styles from "./Tasks.module.css"
+import styles from "./Tasks.module.css";
 
 function Tasks() {
   const location = useLocation();
@@ -33,14 +33,41 @@ function Tasks() {
     }
   }, [message]);
 
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/tasks", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setTasks(data);
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div>
       <div className={styles.header_container}>
         <h1>Suas tarefas</h1>
-        <LinkButton text="Criar nova tarefa" to="/newtask"/>
+        <LinkButton text="Criar nova tarefa" to="/newtask" />
       </div>
       {message && <Message msg={message} type="success" />}
-      <TaskCard />
+      <div className={styles.task_container}>
+        {tasks.length > 0 &&
+          tasks.map((task) => (
+            <TaskCard
+              key={task.id}
+              name={task.name}
+              description={task.description}
+              category={task.category.category_name}
+            />
+          ))}
+      </div>
     </div>
   );
 }

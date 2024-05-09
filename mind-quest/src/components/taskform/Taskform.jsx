@@ -41,8 +41,8 @@ function Taskform({ handleSubmit, btnText, taskData }) {
     setTask({
      ...task,
       category: {
-        id: e.target.value,
-        name: e.target.options[e.target.selectedIndex].text,
+        category_id: e.target.value,
+        category_name: e.target.options[e.target.selectedIndex].text,
       },
     });
   }
@@ -64,7 +64,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             text="Selecione a categoria"
             options={categories}
             handleOnChange={handleCategory}
-            value={task.category ? task.category.id : ''}
+            value={task.category ? task.category.category_id : ''}
           />
           <Textarea
             type="text"
@@ -72,7 +72,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             name="description"
             placeholder="Insira a descrição da tarefa"
             handleOnChange={handleChange}
-            maxLength={255}
+            maxLength={225}
             value={task.description ? task.description : ''}
           />
           <SubmitButton text={btnText} />
