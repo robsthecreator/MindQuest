@@ -5,6 +5,9 @@
     padding: 0;
 }
 
+.notasks {
+    color: #fdfcfc;
+}
 
 .task_container {
     padding: 30px;

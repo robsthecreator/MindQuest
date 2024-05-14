@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TaskCard from "../layout/TaskCard";
 import Message from "../layout/Message";
 import { useLocation, useHistory } from "react-router-dom";
+import Loading from "../layout/Loading";
 import LinkButton from "../layout/LinkButton";
 import styles from "./Tasks.module.css";
 
@@ -34,6 +35,7 @@ function Tasks() {
   }, [message]);
 
   const [tasks, setTasks] = useState([]);
+  const [removeLoading, setRemoveLoading] = useState(false)
 
   useEffect(() => {
     fetch("http://localhost:5000/tasks", {
@@ -46,6 +48,7 @@ function Tasks() {
       .then((data) => {
         setTasks(data);
         console.log(data);
+        setRemoveLoading(true)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -67,6 +70,12 @@ function Tasks() {
               category={task.category.category_name}
             />
           ))}
+          {!removeLoading && <Loading />}
+          {removeLoading && tasks.length === 0 && (
+            <h3 className={styles.notasks}>Parece que você não tem nenhuma tarefa ! Que tal adicionar uma ?</h3>
+          )
+          
+          }
       </div>
     </div>
   );

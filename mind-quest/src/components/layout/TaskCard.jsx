@@ -1,5 +1,7 @@
 import styles from "./TaskCard.module.css";
 // import { useState, useEffect } from "react";
+import { MdEdit } from "react-icons/md";
+
 import { FaTrashAlt } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 
@@ -8,10 +10,13 @@ function TaskCard({ id, name, description, category, handleRemove }) {
     <>
       <div key={id} className={styles.task}>
         <div className={styles.buttons_container}>
-          <button className={styles.task_button_delete}>
+        <button className={styles.task_button_delete} data-tooltip="Deletar">
             <FaTrashAlt />
           </button>
-          <button className={styles.task_button_done}>
+          <button className={styles.task_button_edit} data-tooltip="Editar">
+            <MdEdit />
+          </button>
+          <button className={styles.task_button_done} data-tooltip="Concluir">
             <FaCheck />
           </button>
         </div>
