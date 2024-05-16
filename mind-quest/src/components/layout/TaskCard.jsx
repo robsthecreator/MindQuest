@@ -1,16 +1,21 @@
 import styles from "./TaskCard.module.css";
 // import { useState, useEffect } from "react";
 import { MdEdit } from "react-icons/md";
-
 import { FaTrashAlt } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 
-function TaskCard({ id, name, description, category, handleRemove }) {
+function TaskCard({ task, id, name, description, category, handleRemove }) {
+  
+  const remove = (e) => {
+    e.preventDefault()
+    handleRemove(task.id)
+  }
   return (
     <>
       <div key={id} className={styles.task}>
         <div className={styles.buttons_container}>
-        <button className={styles.task_button_delete} data-tooltip="Deletar">
+        <button className={styles.task_button_delete} data-tooltip="Deletar"
+         onClick={remove} >
             <FaTrashAlt />
           </button>
           <button className={styles.task_button_edit} data-tooltip="Editar">

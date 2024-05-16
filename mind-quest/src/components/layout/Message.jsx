@@ -6,18 +6,16 @@ import { SlClose } from "react-icons/sl";
 import styles from "./Message.module.css";
 import { useState, useEffect } from "react";
 
-function Message({ type, msg }) {
-  const [visible, setVisible] = useState(false);
+function Message({ type, msg, onClose }) { 
+  const DEFAULT_DURATION = 3000;
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    setVisible(true);
-  
-    return () => {
-      const timer = setTimeout(() => {}, 0);
-      clearTimeout(timer);
-    };
-  }, []);
-  
+    const timeoutId = setTimeout(() => setVisible(false), DEFAULT_DURATION);
+
+    return () => clearTimeout(timeoutId);
+  }, [msg]);
+
   const getIcon = () => {
     switch (type) {
       case "success":
@@ -33,6 +31,11 @@ function Message({ type, msg }) {
     }
   };
 
+  const handleClose = () => {
+    setVisible(false); 
+    if (onClose) onClose();
+  };
+
   return (
     <>
       {visible && (
@@ -40,7 +43,7 @@ function Message({ type, msg }) {
           <div className={styles.sideWall}></div>
           {getIcon()}
           {msg}
-          <RiCloseFill className={styles.closeButton} />
+          <RiCloseFill className={styles.closeButton} onClick={handleClose} />
         </div>
       )}
     </>

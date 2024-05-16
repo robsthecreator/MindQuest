@@ -10,6 +10,7 @@ function Tasks() {
   const location = useLocation();
   const history = useHistory();
   const [message, setMessage] = useState("");
+  const [deleteMessage, setDeleteMessage] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -28,11 +29,24 @@ function Tasks() {
     }
   }, [history, location.search]);
 
-  useEffect(() => {
-    if (message) {
-      setTimeout(() => setMessage(""), 3000);
-    }
-  }, [message]);
+  function removeTask(id) {
+    fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then(resp => {
+      if (resp.ok) {
+        setTasks(tasks.filter((task) => task.id !== id));
+        setDeleteMessage("Tarefa deletada com sucesso!");
+      } else {
+        console.error("Error deleting task:", resp.statusText);
+      }
+    })
+    .catch((err) => console.log(err));
+  }
+
 
   const [tasks, setTasks] = useState([]);
   const [removeLoading, setRemoveLoading] = useState(false)
@@ -60,6 +74,7 @@ function Tasks() {
         <LinkButton text="Criar nova tarefa" to="/newtask" />
       </div>
       {message && <Message msg={message} type="success" />}
+      {deleteMessage && <Message msg={deleteMessage} type="success" />}
       <div className={styles.task_container}>
         {tasks.length > 0 &&
           tasks.map((task) => (
@@ -68,6 +83,8 @@ function Tasks() {
               name={task.name}
               description={task.description}
               category={task.category.category_name}
+              handleRemove={removeTask}
+              task={task}
             />
           ))}
           {!removeLoading && <Loading />}
