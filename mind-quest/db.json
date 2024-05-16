@@ -1,15 +1,5 @@
 {
-  "tasks": [
-    {
-      "id": "9523",
-      "name": "teste ",
-      "category": {
-        "category_id": "1",
-        "category_name": "Pessoal"
-      },
-      "description": "teste"
-    }
-  ],
+  "tasks": [],
   "categories": [
     {
       "category_id": "1",

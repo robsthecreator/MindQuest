@@ -5,6 +5,7 @@ import SubmitButton from "../form/SubmitButton";
 import Textarea from "../form/Textarea";
 import Container from "../layout/Container";
 import styles from "./Taskform.module.css";
+import Message from "../layout/Message";
 
 function Taskform({ handleSubmit, btnText, taskData }) {
   const [categories, setCategories] = useState([]);
@@ -24,11 +25,30 @@ function Taskform({ handleSubmit, btnText, taskData }) {
       .catch((err) => console.log(err));
   }, []);
 
+  const [errors, setErrors] = useState({});
+
   const submit = (e) => {
     e.preventDefault();
-    // console.log(task)
-    handleSubmit(task);
+
+    const newErrors = {};
+
+
+    if (!task.name || task.name.trim() === "") {
+      newErrors.name = "O título da tarefa é obrigatório";
+    }
+
+    // Validate category field
+    if (!task.category || !task.category.category_id) {
+      newErrors.category = "Selecione uma categoria para a tarefa";
+    }
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      handleSubmit(task);
+    }
   };
+
 
   function handleChange(e) {
     setTask({
@@ -66,6 +86,9 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             handleOnChange={handleCategory}
             value={task.category ? task.category.category_id : ''}
           />
+            {errors.name && <Message msg={errors.name} type="warning" />}
+            {errors.category && <Message msg={errors.category} type="warning" />}
+
           <Textarea
             type="text"
             text="Descrição da tarefa"
@@ -75,8 +98,8 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             maxLength={225}
             value={task.description ? task.description : ''}
           />
-          <SubmitButton text={btnText} />
-        </div>
+          <SubmitButton text={btnText} disabled={Object.keys(errors).length > 0} />     
+       </div>
       </form>
     </Container>
   );
