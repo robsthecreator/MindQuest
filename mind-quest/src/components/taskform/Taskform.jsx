@@ -68,7 +68,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
   }
 
   return (
-    <Container>
+    <>
       <form onSubmit={submit}>
         <div className={styles.create_task_container}>
           <Input
@@ -86,8 +86,10 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             handleOnChange={handleCategory}
             value={task.category ? task.category.category_id : ''}
           />
-            {errors.name && <Message msg={errors.name} type="warning" />}
-            {errors.category && <Message msg={errors.category} type="warning" />}
+            <Container customClass="message_container">
+              {errors.name && <Message msg={errors.name} type="info" />}
+              {errors.category && <Message msg={errors.category} type="info" />}
+            </Container>
 
           <Textarea
             type="text"
@@ -101,7 +103,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
           <SubmitButton text={btnText} disabled={Object.keys(errors).length > 0} />     
        </div>
       </form>
-    </Container>
+    </>
   );
 }
 

@@ -5,12 +5,12 @@ import { useLocation, useHistory } from "react-router-dom";
 import Loading from "../layout/Loading";
 import LinkButton from "../layout/LinkButton";
 import styles from "./Tasks.module.css";
+import Container from "../layout/Container";
 
 function Tasks() {
   const location = useLocation();
   const history = useHistory();
   const [message, setMessage] = useState("");
-  const [deleteMessage, setDeleteMessage] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -36,15 +36,16 @@ function Tasks() {
         "Content-Type": "application/json",
       },
     })
-    .then(resp => {
-      if (resp.ok) {
-        setTasks(tasks.filter((task) => task.id !== id));
-        setDeleteMessage("Tarefa deletada com sucesso!");
-      } else {
-        console.error("Error deleting task:", resp.statusText);
-      }
-    })
-    .catch((err) => console.log(err));
+      .then(resp => {
+        if (resp.ok) {
+          setTasks(tasks.filter((task) => task.id !== id));
+          setMessage("Tarefa deletada com sucesso!"); // Set deletion success message
+          setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+        } else {
+          console.error("Error deleting task:", resp.statusText);
+        }
+      })
+      .catch((err) => console.log(err));
   }
 
 
@@ -73,8 +74,11 @@ function Tasks() {
         <h1>Suas tarefas</h1>
         <LinkButton text="Criar nova tarefa" to="/newtask" />
       </div>
-      {message && <Message msg={message} type="success" />}
-      {deleteMessage && <Message msg={deleteMessage} type="success" />}
+      <Container customClass="message_container">
+        {message && <Message msg={message} type="success" />}
+        {/* {deleteMessage && <Message msg={deleteMessage} type="success" />} */}
+      </Container>
+
       <div className={styles.task_container}>
         {tasks.length > 0 &&
           tasks.map((task) => (

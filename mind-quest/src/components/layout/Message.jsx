@@ -8,13 +8,15 @@ import { useState, useEffect } from "react";
 
 function Message({ type, msg, onClose }) { 
   const DEFAULT_DURATION = 3000;
+  const [timeoutId, setTimeoutId] = useState(null);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => setVisible(false), DEFAULT_DURATION);
-
-    return () => clearTimeout(timeoutId);
-  }, [msg]);
+    setTimeoutId(timeoutId); // Store timeout ID in state
+  
+    return () => clearTimeout(timeoutId); // Clear timeout on cleanup
+  }, [msg, timeoutId]);
 
   const getIcon = () => {
     switch (type) {
@@ -32,7 +34,9 @@ function Message({ type, msg, onClose }) {
   };
 
   const handleClose = () => {
-    setVisible(false); 
+    
+    setVisible(false);
+     
     if (onClose) onClose();
   };
 
