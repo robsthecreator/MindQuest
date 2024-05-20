@@ -13,9 +13,9 @@ function Message({ type, msg, onClose }) {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => setVisible(false), DEFAULT_DURATION);
-    setTimeoutId(timeoutId); // Store timeout ID in state
+    setTimeoutId(timeoutId); 
   
-    return () => clearTimeout(timeoutId); // Clear timeout on cleanup
+    return () => clearTimeout(timeoutId);
   }, [msg, timeoutId]);
 
   const getIcon = () => {

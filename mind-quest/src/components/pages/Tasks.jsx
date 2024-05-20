@@ -39,8 +39,8 @@ function Tasks() {
       .then(resp => {
         if (resp.ok) {
           setTasks(tasks.filter((task) => task.id !== id));
-          setMessage("Tarefa deletada com sucesso!"); // Set deletion success message
-          setTimeout(() => setMessage(""), 3000); // Clear message after 3 seconds
+          setMessage("Tarefa deletada com sucesso!"); 
+          setTimeout(() => setMessage(""), 3000);
         } else {
           console.error("Error deleting task:", resp.statusText);
         }
@@ -64,6 +64,7 @@ function Tasks() {
         setTasks(data);
         console.log(data);
         setRemoveLoading(true)
+        setTimeout(() => setMessage(""), 3000);
       })
       .catch((err) => console.log(err));
   }, []);
