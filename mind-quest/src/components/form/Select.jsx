@@ -5,7 +5,7 @@ function Select({ text, name, options, handleOnChange, value }) {
     <div>
       <label htmlFor={name}>{text}:</label>
       <select className={styles.select_box} name={name} id={name} onChange={handleOnChange} value={value || ''}>
-        <option>Selecione uma opção</option>
+        <option value="">Selecione uma opção</option>
         {options.map((option) => (
           <option key={option.category_id} value={option.category_id}>{option.category_name}</option>
         ))}

@@ -77,7 +77,6 @@ function Tasks() {
       </div>
       <Container customClass="message_container">
         {message && <Message msg={message} type="success" />}
-        {/* {deleteMessage && <Message msg={deleteMessage} type="success" />} */}
       </Container>
 
       <div className={styles.task_container}>

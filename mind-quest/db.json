@@ -7,16 +7,8 @@
         "category_id": "6",
         "category_name": "Outros"
       },
-      "description": "pequenas mudanças hoje"
-    },
-    {
-      "id": "837a",
-      "name": "formato das mensagens",
-      "category": {
-        "category_id": "6",
-        "category_name": "Outros"
-      },
-      "description": "deixar as tarefas em coluna, uma em cima da outra."
+      "description": "pequenas mudanças hoje",
+      "completed": false
     },
     {
       "id": "ed61",
@@ -25,7 +17,8 @@
         "category_id": "3",
         "category_name": "Estudos"
       },
-      "description": "tes"
+      "description": "tes",
+      "completed": false
     },
     {
       "id": "cee8",
@@ -34,7 +27,48 @@
         "category_name": "Outros"
       },
       "name": "t",
-      "description": "test"
+      "description": "test",
+      "completed": false
+    },
+    {
+      "id": "e665",
+      "name": "VVZVZ",
+      "category": {
+        "category_id": "3",
+        "category_name": "Estudos"
+      },
+      "description": "ZVZVZ",
+      "completed": false
+    },
+    {
+      "id": "478e",
+      "name": "V2V2V",
+      "description": "V2V2",
+      "category": {
+        "category_id": "4",
+        "category_name": "Saúde"
+      },
+      "completed": false
+    },
+    {
+      "id": "ea22",
+      "name": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "description": "AWWWWWWW",
+      "category": {
+        "category_id": "2",
+        "category_name": "Trabalho"
+      },
+      "completed": false
+    },
+    {
+      "id": "650b",
+      "name": "teste animação msg",
+      "category": {
+        "category_id": "2",
+        "category_name": "Trabalho"
+      },
+      "description": "testttting",
+      "completed": false
     }
   ],
   "categories": [

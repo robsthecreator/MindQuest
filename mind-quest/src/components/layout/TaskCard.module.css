@@ -1,88 +1,112 @@
-  .buttons_container{
-    margin-bottom: 30px;
-  }
-  .task {
-    color: #fdfcfc;
-    background-color: #121925;
-    margin: 3px;
-    padding: 10px;
-    border-radius: 5px;
-    display: block;
-    width: 50vh;
-    border: #0b111d 2px solid;
-  }
-  .task_header {
-    font-size: 16px;
-    width: 300px;
-    word-wrap: break-word;
-    height: 50px;
-  }
-  .task_description {
-    font-size: 15px;
-    word-wrap: break-word;
-    background-color: #22252c;
-    border: #0b111d 1.5px solid;
-    border-radius: 5px;
-    padding: 7px 0px 0px 3px;
-    height: 10rem;
-  }
-  .task_category {
-    font-size: 15px;
-    padding: 0.2rem 1.2rem;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 500;
-    background-color: #141b29;
-    border: #15233d 1.5px solid;
-  }
-  
-  .task_button_delete,
-  .task_button_done,
-  .task_button_edit {
-    font-size: 15px;
-    position: relative;
-    float: right;
-    border: none;
-    padding: 3px;
-    margin-left: 3px;
-    padding-bottom: 2px;
-    border-radius: 3px;
-    box-shadow: 0 2px 0 hsl(198, 1%, 29%);
-    transition: all 0.8s;
-    background-color: hsla(166, 50%, 70%, 0.7);
-  }
-  
-  .task_button_delete:hover,
-  .task_button_done:hover,
-  .task_button_edit:hover {
-    cursor: pointer;
-    transform: rotate(4deg);
-    transform: scale(1.3);
-  }
-  
-  .task_button_delete:hover {
-    background-color: #22252c;
-    color: rgb(219, 36, 36);
-  }
+.buttons_container {
+  margin-bottom: 30px;
+}
+.task {
+  color: #fdfcfc;
+  background-color: #121925;
+  margin: 3px;
+  padding: 10px;
+  border-radius: 5px;
+  display: block;
+  width: 50vh;
+  border: #0b111d 2px solid;
+}
+.task_header {
+  font-size: 16px;
+  width: 300px;
+  word-wrap: break-word;
+  height: 50px;
+}
+.task_description {
+  font-size: 15px;
+  word-wrap: break-word;
+  background-color: #22252c;
+  border: #0b111d 1.5px solid;
+  border-radius: 5px;
+  padding: 7px 0px 0px 3px;
+  height: 10rem;
+}
+.task_category {
+  font-size: 15px;
+  padding: 0.2rem 1.2rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  background-color: #141b29;
+  border: #15233d 1.5px solid;
+}
 
-  .task_button_done:hover {
-    background-color: #22252c;
-    color: rgb(107, 165, 20);
-  }
-  .task_button_edit:hover {
-    background-color: #22252c;
-    color: #0396ff;
-  }
-  
-  [data-tooltip]:hover:after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 15px;
-    text-shadow: 0px 0.9px 1px;
-    left: -20px;
-    transform: translateY(-50%);
-    background-color: #22252c;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-  }
+.task_button_delete,
+.task_button_done,
+.task_button_edit {
+  font-size: 15px;
+  position: relative;
+  float: right;
+  border: none;
+  padding: 3px;
+  margin-left: 3px;
+  padding-bottom: 2px;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 hsl(198, 1%, 29%);
+  transition: all 0.8s;
+  background-color: hsla(166, 50%, 70%, 0.7);
+}
+
+.task_button_delete:hover,
+.task_button_done:hover,
+.task_button_edit:hover {
+  cursor: pointer;
+  transform: rotate(4deg);
+  transform: scale(1.3);
+}
+
+.task_button_delete:hover {
+  background-color: #22252c;
+  color: rgb(219, 36, 36);
+}
+
+.task_button_done:hover {
+  background-color: #22252c;
+  color: rgb(107, 165, 20);
+}
+.task_button_edit:hover {
+  background-color: #22252c;
+  color: #0396ff;
+}
+
+[data-tooltip]:hover:after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 15px;
+  text-shadow: 0px 0.9px 1px;
+  left: -20px;
+  transform: translateY(-50%);
+  background-color: #22252c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.task.completed {
+  filter: blur(0px);
+}
+
+.task.completed .task_description {
+  display: none;
+}
+
+.task.completed .task_header,
+.task.completed .task_category {
+  text-align: center;
+}
+
+.task.completed .task_completed_message {
+  height: 60%;
+  text-align: center;
+}
+
+.task.completed .img_done {
+  font-size: 17.1vh;
+  margin-top: 10px;
+}
+

@@ -6,7 +6,9 @@
   cursor: pointer;
   transition: 0.7s;
   text-shadow: 2px 1px #00040a;
+  z-index: 3;
   text-align: center;
+  animation: message-appear 0.5s ease-in-out forwards;
 }
 
 .check_icon {
@@ -123,3 +125,25 @@
     }
   }
   
+
+@-webkit-keyframes message-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes message-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
