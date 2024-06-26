@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, { useState, useEffect } from "react";
 import Message from "../layout/Message";
 import { useLocation, useHistory } from "react-router-dom";
@@ -6,13 +7,15 @@ import styles from "./Tasks.module.css";
 import Container from "../layout/Container";
 import TaskContainer from "../layout/TaskContainer";
 import Loading from "../layout/Loading";
+import { CiSearch } from "react-icons/ci";
+
 
 function Tasks() {
   const location = useLocation();
   const history = useHistory();
   const [message, setMessage] = useState("");
   const [expandedCategories, setExpandedCategories] = useState([]);
-  
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -33,15 +36,15 @@ function Tasks() {
 
   function removeTask(id) {
     fetch(`http://localhost:5000/tasks/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then(resp => {
+      .then((resp) => {
         if (resp.ok) {
           setTasks(tasks.filter((task) => task.id !== id));
-          setMessage("Tarefa deletada com sucesso!"); 
+          setMessage("Tarefa deletada com sucesso!");
           setTimeout(() => setMessage(""), 3000);
         } else {
           console.error("Error deleting task:", resp.statusText);
@@ -50,12 +53,9 @@ function Tasks() {
       .catch((err) => console.log(err));
   }
 
-
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    // Simulate loading delay
-    setTimeout(() => {
       fetch("http://localhost:5000/tasks", {
         method: "GET",
         headers: {
@@ -68,7 +68,6 @@ function Tasks() {
           console.log(data);
         })
         .catch((err) => console.log(err));
-    }, 3000); // delay de 3 segundos para teste, LEMBRAR DE TIRAR
   }, []);
 
   const toggleCategoryExpansion = (category) => {
@@ -83,18 +82,39 @@ function Tasks() {
     setIsTodasExpanded(!isTodasExpanded);
   };
 
+  const handleSearchChange = (event) => {
+    setSearchText(event.target.value);
+  };
+  const filteredTasks = tasks.length > 0
+  ? tasks.filter(
+      (task) =>
+          task &&
+          task.name?.toLowerCase().includes(searchText.toLowerCase()) ||  
+          task.category?.category_name?.toLowerCase().includes(searchText.toLowerCase())
+  )
+  : [];
+
   return (
     <div>
       <div className={styles.header_container}>
         <h1>Suas tarefas</h1>
-        {/* adicionar Lupa */}
-        <h2 className={styles.pesquisar}>O-Pesquisar</h2> 
+        <div className={styles.search_task}>
+        <input
+          type="text"
+          placeholder="Pesquisar tarefas"
+          className={styles.search_input}
+          value={searchText}
+          onChange={handleSearchChange}
+        />
+        <CiSearch className={styles.search_icon} />
+        </div>
+
         <LinkButton text="Criar nova tarefa" to="/newtask" />
       </div>
       <Container customClass="message_container">
         {message && <Message msg={message} type="success" />}
       </Container>
-  
+
       {tasks.length === 0 ? (
         <div className={styles.loading_container}>
           <Loading />
@@ -103,35 +123,40 @@ function Tasks() {
         <>
           <TaskContainer
             title="Todas"
-            tasks={tasks}
+            tasks={filteredTasks}
             handleRemove={removeTask}
             isExpanded={isTodasExpanded}
             onToggleExpansion={toggleTodasExpansion}
-            itemCount={tasks.length}
+            itemCount={filteredTasks.length}
           />
-  
+
           {tasks.length > 0 && (
             <div className={styles.category_containers}>
-              {Array.from(new Set(tasks.map((task) => task.category.category_name))).map(
-                (category) => (
-                  <TaskContainer
-                    key={category}
-                    title={category}
-                    tasks={tasks.filter((task) => task.category.category_name === category)}
-                    handleRemove={removeTask}
-                    isExpanded={expandedCategories.includes(category)}
-                    onToggleExpansion={() => toggleCategoryExpansion(category)}
-                    itemCount={tasks.filter((task) => task.category.category_name === category).length}
-                  />
-                )
-              )}
+              {Array.from(
+                new Set(tasks.map((task) => task.category.category_name))
+              ).map((category) => (
+                <TaskContainer
+                  key={category}
+                  title={category}
+                  tasks={tasks.filter(
+                    (task) => task.category.category_name === category
+                  )}
+                  handleRemove={removeTask}
+                  isExpanded={expandedCategories.includes(category)}
+                  onToggleExpansion={() => toggleCategoryExpansion(category)}
+                  itemCount={
+                    tasks.filter(
+                      (task) => task.category.category_name === category
+                    ).length
+                  }
+                />
+              ))}
             </div>
           )}
         </>
       )}
     </div>
   );
-  
 }
 
 export default Tasks;

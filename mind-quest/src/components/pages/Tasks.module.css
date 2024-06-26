@@ -18,3 +18,29 @@
     top: 50%;
     left: 50%;
 }
+
+.search_task {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 25px;
+    border-bottom:1px solid rgba(255,255,255,.5);
+}
+
+.search_task .search_icon {
+    color: #fdfcfc;
+    font-size: 30px;
+    
+}
+.search_task input {
+    height: 50px;
+    border-style: none;
+    padding: 8px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    outline: none;
+    border-radius: 0px;
+    background-color: transparent;
+    color: #fdfcfc;
+      }
+      
