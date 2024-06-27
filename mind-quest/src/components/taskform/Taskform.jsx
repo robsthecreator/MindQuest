@@ -32,14 +32,13 @@ function Taskform({ handleSubmit, btnText, taskData }) {
 
     const newErrors = {};
 
-
     if (!task.name || task.name.trim() === "") {
-      newErrors.name = "O título da tarefa é obrigatório";
+      newErrors.name = "Insira o título antes de enviar";
     }
 
     // Validate category field
     if (!task.category || !task.category.category_id) {
-      newErrors.category = "Selecione uma categoria para a tarefa";
+      newErrors.category = "Selecione uma categoria antes de enviar";
     }
 
     setErrors(newErrors);
@@ -48,7 +47,6 @@ function Taskform({ handleSubmit, btnText, taskData }) {
       handleSubmit(task);
     }
   };
-
 
   function handleChange(e) {
     setTask({
@@ -59,7 +57,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
 
   function handleCategory(e) {
     setTask({
-     ...task,
+      ...task,
       category: {
         category_id: e.target.value,
         category_name: e.target.options[e.target.selectedIndex].text,
@@ -73,23 +71,20 @@ function Taskform({ handleSubmit, btnText, taskData }) {
         <div className={styles.create_task_container}>
           <Input
             type="text"
+            autoComplete="nope"
             text="Título da tarefa"
             name="name"
             placeholder="Insira o título da tarefa"
             handleOnChange={handleChange}
-            value={task.name ? task.name : ''}
+            value={task.name ? task.name : ""}
           />
           <Select
             name="category_id"
             text="Selecione a categoria"
             options={categories}
             handleOnChange={handleCategory}
-            value={task.category ? task.category.category_id : ''}
+            value={task.category ? task.category.category_id : ""}
           />
-            <Container customClass="message_container">
-              {errors.name && <Message msg={errors.name} type="info" />}
-              {errors.category && <Message msg={errors.category} type="info" />}
-            </Container>
 
           <Textarea
             type="text"
@@ -98,11 +93,18 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             placeholder="Insira a descrição da tarefa"
             handleOnChange={handleChange}
             maxLength={225}
-            value={task.description ? task.description : ''}
+            value={task.description ? task.description : ""}
           />
-          <SubmitButton text={btnText} disabled={Object.keys(errors).length > 0} />     
-       </div>
+          <SubmitButton
+            text={btnText}
+            disabled={Object.keys(errors).length > 0}
+          />
+        </div>
       </form>
+      <Container customClass="message_container">
+        {errors.name && <Message msg={errors.name} type="info" />}
+        {errors.category && <Message msg={errors.category} type="info" />}
+      </Container>
     </>
   );
 }

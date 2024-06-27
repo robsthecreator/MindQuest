@@ -16,8 +16,7 @@ function Newtask() {
     })
    .then((response) => response.json())
    .then((data) => {
-    console.log(data)
-    history.push('/tasks?message=Task%20criada%20com%20sucesso%20!')
+    history.push('/tasks?message=Tarefa%20criada%20com%20sucesso%20!')
    })
    .catch(err => console.log(err))
 

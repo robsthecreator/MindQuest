@@ -4,19 +4,10 @@ import { IoIosWarning } from "react-icons/io";
 import { RiCloseFill } from "react-icons/ri";
 import { SlClose } from "react-icons/sl";
 import styles from "./Message.module.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Message({ type, msg, onClose }) { 
-  const DEFAULT_DURATION = 3000;
-  const [timeoutId, setTimeoutId] = useState(null);
   const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => setVisible(false), DEFAULT_DURATION);
-    setTimeoutId(timeoutId); 
-  
-    return () => clearTimeout(timeoutId);
-  }, [msg, timeoutId]);
 
   const getIcon = () => {
     switch (type) {

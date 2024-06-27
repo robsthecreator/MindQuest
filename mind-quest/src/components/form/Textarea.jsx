@@ -19,6 +19,7 @@ function Textarea({
         maxLength={maxLength}
         id={name}
         placeholder={placeholder}
+        autoComplete="off"
         onChange={handleOnChange}
         value={value}
       />

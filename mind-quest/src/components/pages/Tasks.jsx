@@ -9,13 +9,13 @@ import TaskContainer from "../layout/TaskContainer";
 import Loading from "../layout/Loading";
 import { CiSearch } from "react-icons/ci";
 
-
 function Tasks() {
   const location = useLocation();
   const history = useHistory();
   const [message, setMessage] = useState("");
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [searchText, setSearchText] = useState("");
+
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -27,6 +27,7 @@ function Tasks() {
       setMessage(messageFromQuery);
       const newSearchParams = new URLSearchParams(location.search);
       newSearchParams.delete("message");
+      setTimeout(() => setMessage(""), 3000);
       history.replace({
         pathname: "/tasks",
         search: newSearchParams.toString(),
@@ -54,21 +55,29 @@ function Tasks() {
   }
 
   const [tasks, setTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState([]);
 
   useEffect(() => {
-      fetch("http://localhost:5000/tasks", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    setIsLoading(true);
+    setTimeout(() => {
+    fetch("http://localhost:5000/tasks", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setTasks(data);
+        setIsLoading(false);
       })
-        .then((resp) => resp.json())
-        .then((data) => {
-          setTasks(data);
-          console.log(data);
-        })
-        .catch((err) => console.log(err));
+      .catch((err) => {console.log(err)
+        setIsLoading(false);
+      }
+    );
+  }, 3000);
   }, []);
+  
 
   const toggleCategoryExpansion = (category) => {
     setExpandedCategories((prevExpanded) =>
@@ -85,37 +94,50 @@ function Tasks() {
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
-  const filteredTasks = tasks.length > 0
-  ? tasks.filter(
-      (task) =>
-          task &&
-          task.name?.toLowerCase().includes(searchText.toLowerCase()) ||  
-          task.category?.category_name?.toLowerCase().includes(searchText.toLowerCase())
-  )
-  : [];
+  const filteredTasks =
+    tasks.length > 0
+      ? tasks.filter(
+          (task) =>
+            (task &&
+              task.name?.toLowerCase().includes(searchText.toLowerCase())) ||
+            task.category?.category_name
+              ?.toLowerCase()
+              .includes(searchText.toLowerCase())
+        )
+      : [];
 
   return (
     <div>
       <div className={styles.header_container}>
-        <h1>Suas tarefas</h1>
+        <h1 className={styles.header_title}>Suas tarefas</h1>
         <div className={styles.search_task}>
-        <input
-          type="text"
-          placeholder="Pesquisar tarefas"
-          className={styles.search_input}
-          value={searchText}
-          onChange={handleSearchChange}
-        />
-        <CiSearch className={styles.search_icon} />
+          <input
+            type="text"
+            placeholder="Pesquisar tarefas"
+            className={styles.search_input}
+            value={searchText}
+            onChange={handleSearchChange}
+          />
+          <CiSearch className={styles.search_icon} />
         </div>
 
         <LinkButton text="Criar nova tarefa" to="/newtask" />
       </div>
       <Container customClass="message_container">
-        {message && <Message msg={message} type="success" />}
+        {message && (
+          <Message
+            msg={message}
+            type="success"
+            onClose={() => setMessage("")}
+          />
+        )}
       </Container>
 
-      {tasks.length === 0 ? (
+      {tasks.length === 0 && !isLoading ? (
+        <div className={styles.notasks_container}>
+          <h1>Não há tarefas cadastradas, adicione uma !</h1>
+        </div>
+      ) : isLoading ? (
         <div className={styles.loading_container}>
           <Loading />
         </div>
