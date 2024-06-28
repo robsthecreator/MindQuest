@@ -6,7 +6,8 @@
       "category": {
         "category_id": "2",
         "category_name": "Trabalho"
-      }
+      },
+      "completed": false
     },
     {
       "id": "ffa0",
@@ -14,7 +15,8 @@
       "category": {
         "category_id": "4",
         "category_name": "Saúde"
-      }
+      },
+      "completed": false
     },
     {
       "id": "9afa",

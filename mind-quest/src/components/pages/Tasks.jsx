@@ -114,6 +114,8 @@ function Tasks() {
           <input
             type="text"
             placeholder="Pesquisar tarefas"
+            name="search"
+            autoComplete="off"
             className={styles.search_input}
             value={searchText}
             onChange={handleSearchChange}

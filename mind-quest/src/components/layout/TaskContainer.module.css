@@ -28,3 +28,7 @@
     cursor: pointer;
   }
   
+.category_header:hover {
+  background-color: #282c31;
+  border-radius: 10px;
+}
