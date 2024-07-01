@@ -15,6 +15,7 @@ function NavBar(props) {
         <ul>
           <FaBars onClick={showSidebar} />
           {sidebar && <Sidebar active={sidebar} setActive={setSidebar} />}
+
           <li>
             <a href="/user">Olá, {props.username}</a>
             <img

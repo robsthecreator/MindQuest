@@ -1,13 +1,11 @@
 import styles from "./Home.module.css";
-// import TaskCard from "../layout/TaskCard";
-
+import Menu
+ from "../layout/Menu";
 function Home() {
   return (
     <section className={styles.home_container}>
         <h1>Home</h1>
-      {/* <div className={styles.tasks_home_container}>
-        <TaskCard />
-      </div> */}
+        <Menu />
     </section>
   );
 }

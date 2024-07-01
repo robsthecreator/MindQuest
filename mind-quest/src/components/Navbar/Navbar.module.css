@@ -1,22 +1,21 @@
 .navbar {
   background-color: #282c34;
   box-shadow: 0 0 20px 3px;
+  width: 100%;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
   align-items: center;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 5px 7vh;
+  padding: 5px 3vh;
 
   > svg {
     color: rgb(253, 252, 252);
     width: 25px;
     height: 25px;
     cursor: pointer;
-    margin-right: 60%;
   }
 }
 

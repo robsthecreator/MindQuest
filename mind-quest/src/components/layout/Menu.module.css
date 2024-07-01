@@ -1,0 +1,42 @@
+.navigation_button {
+  background-color: #293242;
+  border-radius: 30%;
+  color: #fdfcfc;
+  font-size: 25px;
+  padding: 8px;
+  opacity: 0;
+  transition: background-color 1s ease-in-out;
+  position: relative;
+}
+
+.navigation_buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: fit-content;
+  height: fit-content;
+  padding: 7px;
+  position: fixed;
+  left: 5;
+  bottom: 50px;
+}
+
+.menu_toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  left: 10px;
+  bottom: 5px;
+  color: #fdfcfc;
+}
+
+.navigation_buttons_open .navigation_button {
+  opacity: 1;
+}
+
+.menu_toggle {
+  font-size: 32px;
+}

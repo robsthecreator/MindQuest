@@ -1,6 +1,7 @@
 import Taskform from "../taskform/Taskform";
 import { useHistory } from 'react-router-dom';
 import styles from "./Newtask.module.css";
+import Menu from "../layout/Menu";
 
 function Newtask() {
 
@@ -28,6 +29,7 @@ function Newtask() {
       <div className={styles.create_task_container}>
         <Taskform handleSubmit={createPost} btnText="Criar tarefa" />
       </div>
+      <Menu />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import Container from "../layout/Container";
 import TaskContainer from "../layout/TaskContainer";
 import Loading from "../layout/Loading";
 import { CiSearch } from "react-icons/ci";
+import Menu from "../layout/Menu";
 
 function Tasks() {
   const location = useLocation();
@@ -177,6 +178,7 @@ function Tasks() {
               ))}
             </div>
           )}
+        <Menu />
         </>
       )}
     </div>
