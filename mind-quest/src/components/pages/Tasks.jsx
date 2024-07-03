@@ -17,7 +17,7 @@ function Tasks() {
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-
+  
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const messageFromQuery = searchParams.get("message");
@@ -57,10 +57,9 @@ function Tasks() {
 
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
-
+  
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
     fetch("http://localhost:5000/tasks", {
       method: "GET",
       headers: {
@@ -76,7 +75,6 @@ function Tasks() {
         setIsLoading(false);
       }
     );
-  }, 3000);
   }, []);
   
 

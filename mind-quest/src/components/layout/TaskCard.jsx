@@ -4,13 +4,42 @@ import { MdEdit } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { CiCircleCheck } from "react-icons/ci";
-
+import EditTaskModal from "../EditTaskModal/EditTaskModal";
 
 
 function TaskCard({ task, id, name, description, category, handleRemove }) {
 
   const [completed, setCompleted] = useState(task.completed);
+  const [localTask, setLocalTask] = useState(task);
+  const [isEditing, setIsEditing] = useState(false);
 
+  
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const onSave = async (updatedTask) => {
+    try {
+      const response = await fetch(`http://localhost:5000/tasks/${updatedTask.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedTask),
+      });
+  
+      if (response.ok) {
+        // Update the task data in your local state or component state
+        // Close the modal
+        setLocalTask(updatedTask)
+        setIsEditing(false);
+      } else {
+        console.error("Error updating task:", response.statusText);
+      }
+    } catch (err) {
+      console.error("Error updating task:", err);
+    } 
+  };
 
   useEffect(() => {
     const storedCompleted = localStorage.getItem(`task-${task.id}-completed`);
@@ -55,7 +84,7 @@ function TaskCard({ task, id, name, description, category, handleRemove }) {
          onClick={remove} >
             <FaTrashAlt />
           </button>
-          <button className={styles.task_button_edit} data-tooltip="Editar">
+          <button className={styles.task_button_edit} data-tooltip="Editar" onClick={() => handleEditClick(task)}>
             <MdEdit />
           </button>
           <button className={styles.task_button_done} data-tooltip="Concluir" onClick={toggleCompleted}>
@@ -77,7 +106,8 @@ function TaskCard({ task, id, name, description, category, handleRemove }) {
         </div>
         <p className={styles.task_description}>{description}</p>
       </div>
-      
+      {isEditing && <EditTaskModal show={isEditing} onHide={() => setIsEditing(false)} task={localTask} onSave={onSave} />}
+  
     </>
   );
 }

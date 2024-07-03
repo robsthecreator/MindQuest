@@ -1,0 +1,128 @@
+/* EditTaskModal.module.css */
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    display: flex;
+    z-index: 1;
+  }
+  
+  .modalContent {
+    background: #121925;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 5% auto;
+    border : #131d30 2px solid;
+    height: 74%;
+  }
+  
+  .modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #fdfcfc;
+  }
+  
+  .form_input {
+    background-color: transparent;
+    padding: 0.7rem;
+    font-size: 1.3rem;
+    border: solid 3px #331a31;
+    color: #fdfcfc;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+  .form_desc {
+    background-color: transparent;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border: solid 3px #331a31;
+    color: #fdfcfc;
+    width: 100%;
+    margin-top: 15px;
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  .form_desc {
+    resize: none;
+    height: 15rem;
+  }
+  
+  .closeButton {
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    float: right;
+    border: none;
+    padding: 3px;
+    font-weight: bold;
+    margin-left: 3px;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 hsl(198, 1%, 29%);
+    transition: all 0.8s;
+    background-color: hsla(166, 50%, 70%, 0.7);
+    cursor: pointer;
+  }
+  
+  .closeButton:hover {
+    background-color: #22252c;
+  color: rgb(219, 36, 36);
+  }
+  
+  .modalBody {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .modalFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  
+
+  
+  .cancelButton:hover {
+    background-color: #22252c;
+  color: rgb(219, 36, 36);
+  }
+  
+
+  
+  .saveButton:hover {
+    background-color: #22252c;
+  color: rgb(107, 165, 20);
+  }
+  
+
+  .cancelButton, .saveButton {
+    text-decoration: none;
+    color: #282c34;
+    height: 3rem;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    margin-right: 10px;
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 hsl(198, 1%, 29%);
+    transition: all 0.8s;
+    background-color: hsla(166, 50%, 70%, 0.7);
+    cursor: pointer;
+  }
