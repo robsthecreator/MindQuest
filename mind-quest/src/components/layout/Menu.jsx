@@ -47,7 +47,7 @@ const Menu = () => {
         href={item.href}
         className={`${styles.navigation_button} ${
           isOpen ? styles.navigation_button_open : ""
-        }`}        
+        }`}
       >
         {item.icon}
       </a>

@@ -17,7 +17,6 @@ function Tasks() {
   const [expandedCategories, setExpandedCategories] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const messageFromQuery = searchParams.get("message");
@@ -57,7 +56,7 @@ function Tasks() {
 
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState([]);
-  
+
   useEffect(() => {
     setIsLoading(true);
     fetch("http://localhost:5000/tasks", {
@@ -71,12 +70,11 @@ function Tasks() {
         setTasks(data);
         setIsLoading(false);
       })
-      .catch((err) => {console.log(err)
+      .catch((err) => {
+        console.log(err);
         setIsLoading(false);
-      }
-    );
+      });
   }, []);
-  
 
   const toggleCategoryExpansion = (category) => {
     setExpandedCategories((prevExpanded) =>
@@ -108,7 +106,7 @@ function Tasks() {
   return (
     <div>
       <div className={styles.header_container}>
-        <h1 className={styles.header_title}>Suas tarefas</h1>
+        <h2 className={styles.header_title}>Suas tarefas</h2>
         <div className={styles.search_task}>
           <input
             type="text"
@@ -176,7 +174,7 @@ function Tasks() {
               ))}
             </div>
           )}
-        <Menu />
+          <Menu />
         </>
       )}
     </div>

@@ -8,11 +8,10 @@ import Tasks from "./components/pages/Tasks";
 import User from "./components/pages/User";
 import usericon from "./img/user_456212.png";
 
-
 function App() {
   return (
     <Router>
-      <NavBar username="Usuário" usericon={usericon}/>
+      <NavBar username="Usuário" usericon={usericon} />
       <Switch>
         <Container>
           <Route exact path="/">

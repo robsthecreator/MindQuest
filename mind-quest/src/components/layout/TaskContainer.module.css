@@ -1,34 +1,37 @@
 .task_container {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-  .container_title{
-    background-color: #282c34;
-    border-radius: 10px;
-    max-width: 170vh;
-    margin: 0 auto;
-    font-size: 15px;
-    padding-left: 10px;
-  }
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.container_title {
+  background-color: #282c34;
+  border-radius: 10px;
+  max-width: 170vh;
+  margin: 0 auto;
+  padding-left: 10px;
+}
 
-  .notasks {
-    color: #fdfcfc;
+.notasks {
+  color: #fdfcfc;
 }
 
 .category_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline; 
-    color: #fdfcfc;
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #fdfcfc;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
 .category_header:hover {
   background-color: #282c31;
   border-radius: 10px;
+}
+
+.category_title {
+  font-weight: 400;
 }

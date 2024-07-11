@@ -16,9 +16,9 @@ const TaskContainer = ({
       className={`${styles.container_title} ${isExpanded && styles.expanded}`}
     >
       <div className={styles.category_header} onClick={onToggleExpansion}>
-          <h2 className={styles.category_title}>
-            {title} ({itemCount})
-          </h2>
+        <h2 className={styles.category_title}>
+          {title} ({itemCount})
+        </h2>
         <div className={styles.icon_container}>
           {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
         </div>

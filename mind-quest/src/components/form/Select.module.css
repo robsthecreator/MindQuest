@@ -12,3 +12,7 @@
   text-align: center;
   outline: none;
 }
+
+.select_box:hover {
+  background-color: #13202e;
+}

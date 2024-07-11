@@ -1,10 +1,8 @@
 .form_input {
   background-color: transparent;
   padding: 0.7rem;
-  border-bottom-right-radius: 15px 3px;
-  border-bottom-left-radius: 3px 15px;
   font-size: 1.3rem;
-  border: dashed 3px #331a31;
+  border: solid 3px #331a31;
   color: #fdfcfc;
   width: 100%;
   margin-top: 25px;

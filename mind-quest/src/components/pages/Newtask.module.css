@@ -1,12 +1,19 @@
 .create_task_container {
-  margin: -20px auto;
-  min-height: 500px;
-  max-width: 400px;
-  min-width: 250px;
+  margin: 0 auto;
+  width: 50%;
   background: #121925;
   background-image: radial-gradient(#191f25 7.2%, transparent 0);
   background-size: 25px 25px;
   border-radius: 20px;
   box-shadow: 4px 3px 7px 2px #00000040;
   padding: 1rem;
+}
+
+.title_newtask {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 400;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #fdfcfc;
 }

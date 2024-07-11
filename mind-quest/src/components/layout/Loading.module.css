@@ -50,8 +50,9 @@
   width: 24px;
 }
 
-.honeycomb div:after, .honeycomb div:before {
-  content: '';
+.honeycomb div:after,
+.honeycomb div:before {
+  content: "";
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
   position: absolute;

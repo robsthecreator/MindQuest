@@ -6,7 +6,7 @@ import { SlClose } from "react-icons/sl";
 import styles from "./Message.module.css";
 import { useState } from "react";
 
-function Message({ type, msg, onClose }) { 
+function Message({ type, msg, onClose }) {
   const [visible, setVisible] = useState(true);
 
   const getIcon = () => {
@@ -25,9 +25,8 @@ function Message({ type, msg, onClose }) {
   };
 
   const handleClose = () => {
-    
     setVisible(false);
-     
+
     if (onClose) onClose();
   };
 

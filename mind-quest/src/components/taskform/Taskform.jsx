@@ -36,7 +36,6 @@ function Taskform({ handleSubmit, btnText, taskData }) {
       newErrors.name = "Insira o título antes de enviar";
     }
 
-    // Validate category field
     if (!task.category || !task.category.category_id) {
       newErrors.category = "Selecione uma categoria antes de enviar";
     }
@@ -92,7 +91,7 @@ function Taskform({ handleSubmit, btnText, taskData }) {
             name="description"
             placeholder="Insira a descrição da tarefa"
             handleOnChange={handleChange}
-            maxLength={225}
+            maxLength={210}
             value={task.description ? task.description : ""}
           />
           <SubmitButton
